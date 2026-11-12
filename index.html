@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0d1117">
+  <meta name="description" content="GRID Social - A comunidade dos fãs de Fórmula 1">
+  <title>GRID Social | F1 Community</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <button class="mobile-menu" id="mobileMenu"><i data-lucide="menu"></i></button>
+
+  <a class="brand" href="#">
+    <span class="brand-icon"><i data-lucide="flag"></i></span>
+    GRID<span>SOCIAL</span>
+  </a>
+
+  <div class="search">
+    <i data-lucide="search"></i>
+    <input id="searchInput" placeholder="Pesquisar pilotos, equipes e usuários...">
+  </div>
+
+  <div class="top-actions">
+    <button id="notificationBtn"><i data-lucide="bell"></i></button>
+    <div class="avatar">🏎️</div>
+  </div>
+</header>
+
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-label">MENU PRINCIPAL</div>
+
+    <button class="nav-item active" data-page="feed">
+      <i data-lucide="house"></i> Feed
+    </button>
+
+    <button class="nav-item" data-page="drivers">
+      <i data-lucide="trophy"></i> Campeonato de pilotos
+    </button>
+
+    <button class="nav-item" data-page="teams">
+      <i data-lucide="users"></i> Construtores
+    </button>
+
+    <button class="nav-item" data-page="calendar">
+      <i data-lucide="calendar-days"></i> Grandes Prêmios
+    </button>
+
+    <button class="nav-item" data-page="watch">
+      <i data-lucide="tv"></i> Onde assistir
+    </button>
+
+    <button class="nav-item" data-page="community">
+      <i data-lucide="message-circle"></i> Comunidade
+    </button>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-label">TEMPORADA</div>
+
+    <div class="season-card">
+      <span>🏁</span>
+      <div>
+        <strong>F1 2026</strong>
+        <small>Campeonato mundial</small>
+      </div>
+      <span class="live-dot"></span>
+    </div>
+
+    <div class="sidebar-footer">
+      GRID SOCIAL v1.0
+      <small>Feito para fãs de F1</small>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <section class="page active" id="feed">
+      <div class="page-heading">
+        <div>
+          <h1>Feed da comunidade</h1>
+          <p>Acompanhe tudo sobre o mundo da Fórmula 1.</p>
+        </div>
+        <span class="heading-icon">🏁</span>
+      </div>
+
+      <form class="composer" id="postForm">
+        <div class="avatar">🏎️</div>
+        <div class="composer-content">
+          <textarea id="postText" placeholder="O que você está pensando sobre a F1?"></textarea>
+          <div class="composer-footer">
+            <span>Compartilhe com a comunidade</span>
+            <button class="primary-btn" type="submit">
+              <i data-lucide="send"></i> Publicar
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <div class="posts" id="posts"></div>
+    </section>
+
+    <section class="page" id="drivers">
+      <div class="page-heading">
+        <div>
+          <h1>Campeonato de pilotos</h1>
+          <p>Classificação mundial da temporada 2026.</p>
+        </div>
+        <span class="heading-icon">🏆</span>
+      </div>
+
+      <div class="table-card">
+        <div class="table-heading">
+          <div>
+            <span class="tag">F1 2026</span>
+            <h3>Classificação de pilotos</h3>
+          </div>
+          <i data-lucide="trophy"></i>
+        </div>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>POS.</th>
+                <th>PILOTO</th>
+                <th>EQUIPE</th>
+                <th>VITÓRIAS</th>
+                <th>PONTOS</th>
+              </tr>
+            </thead>
+            <tbody id="driversTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="teams">
+      <div class="page-heading">
+        <div>
+          <h1>Campeonato de construtores</h1>
+          <p>Classificação mundial das equipes.</p>
+        </div>
+        <span class="heading-icon">🏎️</span>
+      </div>
+
+      <div class="table-card">
+        <div class="table-heading">
+          <div>
+            <span class="tag">F1 2026</span>
+            <h3>Classificação das equipes</h3>
+          </div>
+          <i data-lucide="users"></i>
+        </div>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>POS.</th>
+                <th>EQUIPE</th>
+                <th>VITÓRIAS</th>
+                <th>PONTOS</th>
+              </tr>
+            </thead>
+            <tbody id="teamsTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="calendar">
+      <div class="page-heading">
+        <div>
+          <h1>Grandes Prêmios</h1>
+          <p>Calendário da temporada de Fórmula 1.</p>
+        </div>
+        <span class="heading-icon">📅</span>
+      </div>
+
+      <div class="race-grid" id="raceGrid"></div>
+    </section>
+
+    <section class="page" id="watch">
+      <div class="page-heading">
+        <div>
+          <h1>Onde assistir</h1>
+          <p>Confira as opções de transmissão no Brasil.</p>
+        </div>
+        <span class="heading-icon">📺</span>
+      </div>
+
+      <div class="watch-card">
+        <div class="watch-logo">F1</div>
+        <div>
+          <span class="tag">PLATAFORMA OFICIAL</span>
+          <h2>F1 TV</h2>
+          <p>Confira disponibilidade, planos e transmissões oficiais da Fórmula 1.</p>
+          <a href="https://www.formula1.com/" target="_blank" rel="noopener noreferrer">
+            Acessar site oficial →
+          </a>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <i data-lucide="info"></i>
+        <div>
+          <h3>Transmissões no Brasil</h3>
+          <p>As opções de canais e plataformas dependem dos direitos de transmissão da temporada. Consulte a programação oficial antes de cada corrida.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="community">
+      <div class="page-heading">
+        <div>
+          <h1>Comunidade</h1>
+          <p>Conecte-se com apaixonados por velocidade.</p>
+        </div>
+      </div>
+
+      <div class="community-card">
+        <div class="community-emoji">🏁</div>
+        <h2>Bem-vindo ao GRID Social!</h2>
+        <p>Compartilhe opiniões, discuta estratégias e acompanhe cada corrida.</p>
+        <button class="primary-btn" onclick="navigate('feed')">Acessar feed</button>
+      </div>
+    </section>
+
+  </main>
+
+  <aside class="rightbar">
+    <div class="right-card">
+      <div class="right-title">
+        PRÓXIMO GRANDE PRÊMIO
+        <span class="live-dot"></span>
+      </div>
+      <div class="race-emoji">🏁</div>
+      <h3 id="nextRaceName">Carregando calendário...</h3>
+      <p id="nextRaceCircuit">Consultando dados da temporada</p>
+      <div class="race-date" id="nextRaceDate">--</div>
+      <button class="outline-btn" onclick="navigate('calendar')">
+        Ver calendário →
+      </button>
+    </div>
+
+    <div class="right-card">
+      <div class="right-title">ACESSO RÁPIDO</div>
+      <button class="quick-link" onclick="navigate('drivers')">🏆 Pilotos →</button>
+      <button class="quick-link" onclick="navigate('teams')">🏎️ Equipes →</button>
+      <button class="quick-link" onclick="navigate('watch')">📺 Onde assistir →</button>
+    </div>
+
+    <div class="right-footer">
+      GRID SOCIAL © 2026
+      <br>Comunidade de Fórmula 1
+    </div>
+  </aside>
+
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="main.js"></script>
+<script>
+  lucide.createIcons();
+</script>
+
+</body>
+</html>
